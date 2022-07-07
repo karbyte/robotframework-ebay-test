@@ -13,4 +13,3 @@ case_002 Filter the search results
     Search & Choose Category
     Click Element    //*[@id="s0-50-12-0-1-2-6-0-7[0]-13[0]-13[0]"]/button
     Click Element    //*[@id="x-refine__group__0"]/ul/li/ul/li[1]/ul/li[12]/a
-
