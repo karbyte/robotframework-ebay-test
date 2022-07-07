@@ -1,19 +1,26 @@
 *** Settings ***
 Library  SeleniumLibrary
 
+*** Variables ***
+${CookieAcceptButton}  //*[@id="gdpr-banner-accept"]
+${SearchTextBox}  //*[@id="gh-ac"]
+${CategoriesList}  //*[@id="gh-cat-box"]
+${CategoriesOptionCompTablets}  //*[@id="gh-cat"]/option[12]
+${SearchButton}  //*[@id="gh-btn"]
+
 *** Keywords ***
 
 Maximize Browser Window and Close Cookie Pop-up
     Maximize Browser Window
     Sleep    4s
-    Click Button    //*[@id="gdpr-banner-accept"]
+    Click Button  ${CookieAcceptButton}
 
 Search & Choose Category
-    Click Button  //*[@id="gh-ac"]
-    Input Text    //*[@id="gh-ac"]  dell
-    Click Element    //*[@id="gh-cat-box"]
-    Click Element    //*[@id="gh-cat"]/option[12]
-    Click Element    //*[@id="gh-btn"]
+    Click Button  ${SearchTextBox}
+    Input Text    ${SearchTextBox}  dell
+    Click Element    ${CategoriesList}
+    Click Element    ${CategoriesOptionCompTablets}
+    Click Element    ${SearchButton}
     Wait Until Page Contains    results
 
 Sleep & Close Browser
