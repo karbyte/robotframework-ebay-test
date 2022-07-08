@@ -5,6 +5,11 @@ Library  SeleniumLibrary
 *** Variables ***
 ${Browser}  Chrome
 ${URL}  https://www.ebay.com
+${MoreCategoryButton}  //*[@id="s0-50-12-0-1-2-6-0-7[0]-13[0]-13[0]"]/button
+${OtherComputerAndNetworking}  //*[@id="x-refine__group__0"]/ul/li/ul/li[1]/ul/li[12]/a
+${RAMsize16gb}  //*[@id="x-refine__group_1__0"]/ul/li[1]/div/a/div/span/input
+${CondNewButton}  //*[@id="x-refine__group__2"]/ul/li[1]/div/a/div/span/input
+${BuyItNowFormat}  //*[@id="x-refine__group__4"]/ul/li[4]/div
 
 *** Test Cases ***
 case_002 Filter the search results
@@ -13,12 +18,15 @@ case_002 Filter the search results
     Search & Choose Category
 
     #sort by subcategory: Other Computers & Networking and Condition:New
-    Click Element    //*[@id="s0-50-12-0-1-2-6-0-7[0]-13[0]-13[0]"]/button
-    Click Element    //*[@id="x-refine__group__0"]/ul/li/ul/li[1]/ul/li[12]/a
-    Click Element    //*[@id="x-refine__group_1__0"]/ul/li[1]/div/a/div/span/input
-    Click Element    //*[@id="x-refine__group__2"]/ul/li[1]/div/a/div/span/input
+    Click Element    ${MoreCategoryButton}
+    Wait Until Page Contains    results
+    Click Element    ${OtherComputerAndNetworking}
+    Wait Until Page Contains    results
+    Click Element    ${RAMsize16gb}
+    Wait Until Page Contains    results
+    Click Element    ${CondNewButton}
     Wait Until Page Contains    results
 
     #sort by Buy it Now
-    Click Element    //*[@id="x-refine__group__4"]/ul/li[4]/div
+    Click Element    ${BuyItNowFormat}
     Sleep & Close Browser
