@@ -10,7 +10,6 @@ ${CategoriesOptionCompTablets}  //*[@id="gh-cat"]/option[12]
 ${SearchButton}  //*[@id="gh-btn"]
 
 *** Keywords ***
-
 Maximize Browser Window and Close Cookie Pop-up
     Maximize Browser Window
     Sleep    2s
@@ -28,7 +27,3 @@ Search & Choose Category
     Click Element    ${CategoriesOptionCompTablets}
     Click Element    ${SearchButton}
     Wait Until Page Contains    results
-
-Sleep & Close Browser
-    Sleep    2s
-    Close Browser
