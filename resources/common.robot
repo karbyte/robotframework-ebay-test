@@ -2,6 +2,7 @@
 Library  SeleniumLibrary
 
 *** Variables ***
+${CookieBanner}  //*[@id="gdpr-banner"]
 ${CookieAcceptButton}  //*[@id="gdpr-banner-accept"]
 ${SearchTextBox}  //*[@id="gh-ac"]
 ${CategoriesList}  //*[@id="gh-cat-box"]
@@ -12,7 +13,8 @@ ${SearchButton}  //*[@id="gh-btn"]
 
 Maximize Browser Window and Close Cookie Pop-up
     Maximize Browser Window
-    Sleep    4s
+    Sleep    2s
+    Wait Until Page Contains Element    //*[@id="gdpr-banner"]
     Click Button  ${CookieAcceptButton}
 
 Search & Choose Category

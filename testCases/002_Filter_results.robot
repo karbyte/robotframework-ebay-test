@@ -19,8 +19,11 @@ case_002 Filter the search results
 
     #sort by subcategory: Other Computers & Networking and Condition:New
     Click Element    ${MoreCategoryButton}
+    Wait Until Page Contains    results
     Click Element    ${OtherComputerAndNetworking}
+    Wait Until Page Contains    results
     Click Element    ${RAMsize16gb}
+    Wait Until Page Contains    results
     Click Element    ${CondNewButton}
     Wait Until Page Contains    results
 
