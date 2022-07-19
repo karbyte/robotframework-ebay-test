@@ -2,13 +2,10 @@
 Resource  ../resources/common.robot
 Library  SeleniumLibrary
 
-*** Variables ***
-${Browser}  Chrome
-${URL}  https://www.ebay.com
+Test Setup  Open Browser & Maximize Browser Window and Close Cookie Pop-up
+Test Teardown  Sleep & Close Browser
 
 *** Test Cases ***
-case_001 Search and Choose Category
-    Open Browser  ${URL}  ${Browser}
-    Maximize Browser Window and Close Cookie Pop-up
-    Search & Choose Category
-    Sleep & Close Browser
+testcase_001_Search_and_Choose_Category
+    Search for a specific brand name
+    Choose the product category
