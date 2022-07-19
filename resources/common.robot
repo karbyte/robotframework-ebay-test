@@ -50,6 +50,11 @@ ${HDDCapacity}  //*[@id="msku-sel-3"]
 ${Accesories}  //*[@id="msku-sel-4"]
 ${AddToCartButton}  //*[@id="atcRedesignId_btn"]
 
+#005
+${DeveloperTabButton}  //*[@id="gf-BIG"]/table/tbody/tr/td[2]/ul[2]/li[1]/a
+${APIoffersButton}  //*[@id="mainContent"]/section[1]/div/div[2]/div/div[2]/div/a
+${BrowseAPIsLink}  //*[@id="mainContent"]/section[3]/table[2]/tbody/tr[1]/td[1]/a
+
 *** Keywords ***
 Open Browser & Maximize Browser Window and Close Cookie Pop-up
     Open Browser  ${URL}  ${Browser}
@@ -120,3 +125,13 @@ Choosing the configuration & adding to cart
     Select From List By Label    ${HDDCapacity}  1 TB
     Select From List By Label    ${Accesories}  DVD Burner + HDMI Adapter
     Click Element    ${AddToCartButton}
+
+Click the developers tab
+    Sleep    1s
+    Click Element    ${DeveloperTabButton}
+    Wait Until Page Contains    Develop
+
+Click APIs button & scroll into offers
+    Click Element    ${APIoffersButton}
+    Wait Until Page Contains    APIs
+    Scroll Element Into View    ${BrowseAPIsLink}
