@@ -51,14 +51,14 @@ ${APIoffersButton}  //*[@id="mainContent"]/section[1]/div/div[2]/div/div[2]/div/
 ${BrowseAPIsLink}  //*[@id="mainContent"]/section[3]/table[2]/tbody/tr[1]/td[1]/a
 
 *** Keywords ***
-Open Browser & Maximize Browser Window and Close Cookie Pop-up
+Open Browser, Maximize Browser Window and Close Cookie Pop-up
     Open Browser  ${URL}  ${Browser}
     Maximize Browser Window
     Sleep    2s
     Wait Until Page Contains Element    ${CookieBanner}
     Click Button  ${CookieAcceptButton}
 
-Sleep & Close Browser
+Sleep and Close Browser
     Sleep    2s
     Close Browser
 

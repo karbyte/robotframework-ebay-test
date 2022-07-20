@@ -2,8 +2,8 @@
 Resource  ../resources/common.robot
 Library  SeleniumLibrary
 
-Test Setup  Open Browser & Maximize Browser Window and Close Cookie Pop-up
-
+Test Setup  Open Browser, Maximize Browser Window and Close Cookie Pop-up
+Test Teardown  Sleep and Close Browser
 
 *** Test Cases ***
 testcase_002_Filter_search_results
