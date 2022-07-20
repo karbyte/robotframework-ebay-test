@@ -17,9 +17,8 @@ ${CategoriesOptionCompTablets}  //*[@id="gh-cat"]/option[12]
 ${SearchButton}  //*[@id="gh-btn"]
 
 #002
-${MoreCategoryButton}  //*[@id="s0-50-12-0-1-2-6-0-7[0]-13[0]-13[0]"]/button
+${MoreCategoryButton}  //*[@id="s0-51-12-0-1-2-6-0-7[0]-13[0]-13[0]"]/button
 ${OtherComputerAndNetworking}  //*[@id="x-refine__group__0"]/ul/li/ul/li[1]/ul/li[12]/a
-${RAMsize16gb}  //*[@id="x-refine__group_1__0"]/ul/li[1]/div/a/div/span/input
 ${CondNewButton}  //*[@id="x-refine__group__2"]/ul/li[1]/div/a/div/span/input
 ${BuyItNowFormat}  //*[@id="x-refine__group__4"]/ul/li[4]/div
 
@@ -44,10 +43,6 @@ ${ChosenCountry}  Poland
 
 #004
 ${SpecificOffer}  //*[@id="srp-river-results"]/ul/li[4]/div/div[2]/a
-${ChooseOperatingSystem}  //*[@id="msku-sel-1"]
-${ChooseMemory}  //*[@id="msku-sel-2"]
-${HDDCapacity}  //*[@id="msku-sel-3"]
-${Accesories}  //*[@id="msku-sel-4"]
 ${AddToCartButton}  //*[@id="atcRedesignId_btn"]
 
 #005
@@ -59,7 +54,7 @@ ${BrowseAPIsLink}  //*[@id="mainContent"]/section[3]/table[2]/tbody/tr[1]/td[1]/
 Open Browser & Maximize Browser Window and Close Cookie Pop-up
     Open Browser  ${URL}  ${Browser}
     Maximize Browser Window
-    Sleep    1s
+    Sleep    2s
     Wait Until Page Contains Element    ${CookieBanner}
     Click Button  ${CookieAcceptButton}
 
@@ -68,8 +63,9 @@ Sleep & Close Browser
     Close Browser
 
 Search for a specific brand name
+    [Arguments]  ${Brand}
     Click Button  ${SearchTextBox}
-    Input Text    ${SearchTextBox}  ${BrandName}
+    Input Text    ${SearchTextBox}  ${Brand}
 
 Choose the product category
     Click Element    ${CategoriesList}
@@ -77,27 +73,27 @@ Choose the product category
     Click Element    ${SearchButton}
     Wait Until Page Contains    results
 
-Filtering the search results by category, RAM size and condition
+Filtering the search results by category and condition
     Click Element    ${MoreCategoryButton}
-    Wait Until Page Contains    results
+    Wait Until Page Contains    results  timeout=5
     Click Element    ${OtherComputerAndNetworking}
-    Wait Until Page Contains    results
-    Click Element    ${RAMsize16gb}
-    Wait Until Page Contains    results
+    Wait Until Page Contains    results  timeout=5
     Click Element    ${CondNewButton}
-    Wait Until Page Contains    results
+    Wait Until Page Contains    results  timeout=5
 
 Show only Buy it Now offers
     Click Element    ${BuyItNowFormat}
 
 Get into Advanced Search tab & search the brand
+    [Arguments]  ${Brand}
     Click Element    ${AdvancedSearchTopButton}
-    Input Text    ${AdvancedSearchTextbox}    ${BrandName}
+    Input Text    ${AdvancedSearchTextbox}    ${Brand}
 
 Choosing the category from the list
     Select From List By Label    ${AdvSearchCategoriesList}    Computers/Tablets & Networking
 
 Activate & Choose the Price Range for an item
+    [Arguments]  ${LowerPriceRange}  ${UpperPriceRange}
     Click Element    ${ActivatePriceRangeBtn}
     Input Text    ${PriceRangeFrom}    ${LowerPriceRange}
     Input Text    ${PriceRangeTo}    ${UpperPriceRange}
@@ -115,15 +111,11 @@ Choosing the offer's location
 Confirm the choices and search the site
     Click Element  ${AdvancedSearchBottomButton}
 
-CLicking an offer & switching to a new tab
+Clicking an offer & switching to a new tab
     Click Element    ${SpecificOffer}
     Switch Window  new
 
-Choosing the configuration & adding to cart
-    Select From List By Label    ${ChooseOperatingSystem}  Windows 10
-    Select From List By Label    ${ChooseMemory}  8 GB
-    Select From List By Label    ${HDDCapacity}  1 TB
-    Select From List By Label    ${Accesories}  DVD Burner + HDMI Adapter
+Adding to cart
     Click Element    ${AddToCartButton}
 
 Click the developers tab
