@@ -7,5 +7,5 @@ Test Teardown  Sleep & Close Browser
 
 *** Test Cases ***
 testcase_001_Search_and_Choose_Category
-    Search for a specific brand name
+    Search for a specific brand name  Brand=${BrandName}
     Choose the product category
